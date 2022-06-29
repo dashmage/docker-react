@@ -1,0 +1,13 @@
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+# Install deps
+COPY package.json .
+RUN npm install
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+
+# Copy over everything else
+COPY . .
+
+CMD ["npm", "run", "start"]
