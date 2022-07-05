@@ -7,7 +7,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Run docker build command
+      - name: Build docker image with dev Dockerfile 
         run: docker build -t docker-react -f Dockerfile.dev .
 
       - name: Run npm tests
