@@ -1,0 +1,14 @@
+name: docker-react-ci
+on: [push]
+jobs: 
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Run docker build command
+        run: docker build -t docker-react -f Dockerfile.dev
+
+      - name: Run npm tests
+        run: docker run docker-react npm run test -- --coverage
